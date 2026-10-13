@@ -1,0 +1,19 @@
+{
+  "sectores": [
+    {
+      "id": 1,
+      "nombre": "Manzana 3",
+      "zona": "Entrada del barrio"
+    }
+  ],
+  "avisos": [
+    {
+      "id": 1,
+      "sectorId": 1,
+      "hora": "3:00 PM",
+      "estado": "activo"
+    }
+  ],
+  "nextSectorId": 2,
+  "nextAvisoId": 2
+}

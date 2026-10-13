@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "Backend - Recolección de Basuras",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear sector",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Manzana 3\",\n  \"zona\": \"Entrada del barrio\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/sectores", "host": ["localhost"], "port": "3000", "path": ["api", "sectores"] }
+      }
+    },
+    {
+      "name": "Listar sectores",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/sectores", "host": ["localhost"], "port": "3000", "path": ["api", "sectores"] }
+      }
+    },
+    {
+      "name": "Obtener sector por id",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/sectores/1", "host": ["localhost"], "port": "3000", "path": ["api", "sectores", "1"] }
+      }
+    },
+    {
+      "name": "Actualizar sector",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Manzana 3 - Actualizada\",\n  \"zona\": \"Entrada del barrio\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/sectores/1", "host": ["localhost"], "port": "3000", "path": ["api", "sectores", "1"] }
+      }
+    },
+    {
+      "name": "Crear aviso",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sectorId\": 1,\n  \"hora\": \"3:00 PM\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/avisos", "host": ["localhost"], "port": "3000", "path": ["api", "avisos"] }
+      }
+    },
+    {
+      "name": "Crear aviso duplicado (debe fallar con 409)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sectorId\": 1,\n  \"hora\": \"4:00 PM\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/avisos", "host": ["localhost"], "port": "3000", "path": ["api", "avisos"] }
+      }
+    },
+    {
+      "name": "Listar avisos",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/avisos", "host": ["localhost"], "port": "3000", "path": ["api", "avisos"] }
+      }
+    },
+    {
+      "name": "Filtrar avisos por sector",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/avisos?sector=1", "host": ["localhost"], "port": "3000", "path": ["api", "avisos"], "query": [{ "key": "sector", "value": "1" }] }
+      }
+    },
+    {
+      "name": "Desactivar aviso",
+      "request": {
+        "method": "PATCH",
+        "url": { "raw": "http://localhost:3000/api/avisos/1/desactivar", "host": ["localhost"], "port": "3000", "path": ["api", "avisos", "1", "desactivar"] }
+      }
+    },
+    {
+      "name": "Eliminar aviso",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "http://localhost:3000/api/avisos/1", "host": ["localhost"], "port": "3000", "path": ["api", "avisos", "1"] }
+      }
+    },
+    {
+      "name": "Obtener aviso inexistente (debe fallar con 404)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/avisos/999", "host": ["localhost"], "port": "3000", "path": ["api", "avisos", "999"] }
+      }
+    }
+  ]
+}
